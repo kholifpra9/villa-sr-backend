@@ -4,9 +4,16 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-label for="name" :value="__('Nama')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="nama" :value="old('nama')" required autofocus autocomplete="nama" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+
+          <!-- username Address -->
+          <div class="mt-4">
+            <x-input-label for="username" :value="__('Username')" />
+            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -37,6 +44,14 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <!-- alamat -->
+        <div>
+            <x-input-label for="alamat" :value="__('Alamat')" />
+                <textarea id="alamat" name="alamat" rows="3" :value="old('alamat')" required autofocus autocomplete="alamat" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+            <!-- <x-text-input id="alamat" class="block mt-1 w-full" type="" name="alamat" :value="old('alamat')" required autofocus autocomplete="alamat" /> -->
+            <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">

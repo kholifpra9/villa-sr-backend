@@ -28,7 +28,7 @@ class VillaSeeder extends Seeder
                 'Deskripsi' => 'lorem ipsum Shared Pool',
                 'lokasi' => 'Cipamingkis',
                 'harga' => '900000',
-                'gambar' => 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQMgb5j_Xe1lFOwpsN8XnuMyYGNNtF7EKztXl2BUuVop3nwfLiX'
+                'gambar' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRvt6T9bSht6IOht_ZLKPglYx89Db3pmtoTosagmAJeg&s'
             ],
             [
                 'nama_villa' => 'Glamping 1 Cipamingkis',
