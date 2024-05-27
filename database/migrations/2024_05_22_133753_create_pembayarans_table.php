@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
             $table->string('bukti_pembayaran');
-            $table->foreignId('invoice_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('booking_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

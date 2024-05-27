@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->date('tanggalCheckin');
             $table->date('tanggalCheckout');
-            $table->tinyInteger('jumlah_tamu');
-            $table->enum('status', ['dipesan', 'selesai', 'cancel']);
+            $table->tinyInteger('jml_malam');
+            $table->tinyInteger('jml_tamu');
+            $table->enum('status', ['dipesan', 'dipesan lunas','selesai', 'canceled']);
+            $table->double('totalBayar');
             $table->foreignId('villa_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
