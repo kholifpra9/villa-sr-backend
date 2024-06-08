@@ -39,8 +39,9 @@ class LoginApiController extends Controller
                 'username' => $user->username,
                 'email' => $user->email,
                 'alamat' => $user->alamat,
-                'token' => $token
+                
             ],
+            'token' => $token
         ], 200);
     }
 }
