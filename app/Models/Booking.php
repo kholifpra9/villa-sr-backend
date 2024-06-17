@@ -13,6 +13,11 @@ class Booking extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function villa() : BelongsTo{
+        return $this->belongsTo(Villa::class);
+    }
+
+
     protected $fillable = [
         'tanggalCheckin',
         'tanggalCheckout',

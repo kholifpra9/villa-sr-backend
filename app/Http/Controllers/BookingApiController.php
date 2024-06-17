@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\User;
+use App\Models\Villa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,7 +12,7 @@ class BookingApiController extends Controller
 {
     public function getBookings(){
         $user_id = Auth::user()->id;
-        $data = Booking::where('user_id', $user_id)->get();
+        $data = Booking::with('villa')->with('user')->where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
         return response()->json([
             'data' => $data
         ]);
