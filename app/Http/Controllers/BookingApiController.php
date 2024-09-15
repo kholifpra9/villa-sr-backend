@@ -18,35 +18,45 @@ class BookingApiController extends Controller
         ]);
     }
 
-    public function store(Request $request){
-        $validated = $request->validate([
-            'tanggalCheckin' => 'required',
-            'tanggalCheckout' => 'required',
-            'jml_malam' => 'required',
-            'jml_tamu' => 'required',
-            'status'=> 'required',
-            'totalBayar' => 'required',
-            'villa_id' => 'required',
-            'user_id' => 'required',
-        ]);
+    public function store(Request $request)
+{
+    // Validasi input
+    $validated = $request->validate([
+        'tanggalCheckin' => 'required',
+        'tanggalCheckout' => 'required',
+        'jml_malam' => 'required',
+        'jml_tamu' => 'required',
+        'status'=> 'required',
+        'totalBayar' => 'required',
+        'villa_id' => 'required',
+        'user_id' => 'required',
+    ]);
 
-        $booking = Booking::create($validated);
+    // Simpan booking
+    $booking = Booking::create($validated);
 
-        return response()->json([
-            'message' => 'succes',
-            'data' => [
-                'id' => $booking->id,
-                'tanggalCheckin' => $booking->tanggalCheckin,
-                'tanggalCheckout' => $booking->tanggalCheckout,
-                'jml_malam' => $booking->jml_malam,
-                'jml_tamu' => $booking->jml_tamu,
-                'status' => $booking->status,
-                'totalBayar' => $booking->totalBayar,
-                'villa_id' => $booking->villa_id,
-                'user_id' => $booking->user_id,
-            ]
+    // Ambil data booking beserta relasi dengan user dan villa
+    $bookingWithRelations = Booking::with('villa', 'user')->find($booking->id);
 
-        ]);
+    // Dapatkan nama user dan nama villa dari relasi
+    $nama_user = $bookingWithRelations->user->nama; // Misal kolom nama user adalah 'name'
+    $nama_villa = $bookingWithRelations->villa->nama_villa; // Misal kolom nama villa adalah 'nama_villa'
 
-    }
+    return response()->json([
+        'message' => 'success',
+        'data' => [
+            'id' => $bookingWithRelations->id,
+            'tanggalCheckin' => $bookingWithRelations->tanggalCheckin,
+            'tanggalCheckout' => $bookingWithRelations->tanggalCheckout,
+            'jml_malam' => $bookingWithRelations->jml_malam,
+            'jml_tamu' => $bookingWithRelations->jml_tamu,
+            'status' => $bookingWithRelations->status,
+            'totalBayar' => $bookingWithRelations->totalBayar,
+            'villa_id' => $bookingWithRelations->villa_id,
+            'user_id' => $bookingWithRelations->user_id,
+            'nama_user' => $nama_user, // Tambahkan nama user
+            'nama_villa' => $nama_villa, // Tambahkan nama villa
+        ]
+    ]);
+}
 }

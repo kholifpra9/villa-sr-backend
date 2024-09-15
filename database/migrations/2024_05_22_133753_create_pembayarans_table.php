@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('bukti_pembayaran');
             $table->foreignId('booking_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('status', ['valid', '!valid']);
             $table->timestamps();
         });
     }

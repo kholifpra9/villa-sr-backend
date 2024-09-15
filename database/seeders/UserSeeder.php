@@ -21,14 +21,16 @@ class UserSeeder extends Seeder
                     'username' => 'kholifaja',
                     'email' => 'kholif@gmail.com',
                     'password' => Hash::make('password'),
-                    'alamat' => 'Cikaret'
+                    'alamat' => 'Cikaret',
+                    'notelp' => '089644592349'
                 ],
                 [
                     'nama' => 'Munaroh',
                     'username' => 'Munarohh',
                     'email' => 'munaroh@gmail.com',
                     'password' => Hash::make('password'),
-                    'alamat' => 'Cikanjut'
+                    'alamat' => 'paskal',
+                    'notelp' => '0088996655'
                 ],
             ]
         );

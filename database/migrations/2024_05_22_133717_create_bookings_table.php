@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('tanggalCheckout');
             $table->tinyInteger('jml_malam');
             $table->tinyInteger('jml_tamu');
-            $table->enum('status', ['dipesan', 'dipesan lunas','selesai', 'canceled']);
+            $table->enum('status', ['dipesan', 'dibayar','selesai', 'canceled']);
             $table->double('totalBayar');
             $table->foreignId('villa_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
